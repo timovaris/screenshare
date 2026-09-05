@@ -27,7 +27,7 @@ still in progress, so this is an early preview rather than a production release.
 ## Get RegionShare
 
 Build from source using the instructions below, or download the portable ZIP
-from this repository's **Releases** page once a preview has been published.
+from this repository's [**Releases**](https://github.com/timovaris/screenshare/releases) page once a preview has been published.
 No public download is published yet.
 
 Extract the ZIP and run `RegShare.exe`. Installation and administrator rights are
