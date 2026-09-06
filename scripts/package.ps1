@@ -14,7 +14,7 @@ $folder = Join-Path $staging $name
 try {
     New-Item -ItemType Directory -Path $folder | Out-Null
     Copy-Item $binary (Join-Path $folder 'RegShare.exe')
-    foreach ($file in @('README.md', 'LICENSE', 'CHANGELOG.md', 'CONTRIBUTING.md', 'regionshare_requirements.md')) {
+    foreach ($file in @('README.md', 'LICENSE', 'CHANGELOG.md', 'CONTRIBUTING.md')) {
         Copy-Item (Join-Path $root $file) $folder
     }
     foreach ($directory in @('docs', 'assets')) {

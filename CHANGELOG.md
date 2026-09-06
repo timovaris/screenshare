@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.0 Preview - Unreleased
+## [0.1.0 Preview](https://github.com/timovaris/screenshare/releases/tag/v0.1.0-preview) - 2026-09-05
 
-First public preview candidate for Windows 11 x64.
+First public preview for Windows 11 x64.
 
 - Native, resizable region selector and separate shareable output window.
 - Windows Graphics Capture and D3D11 GPU capture, cropping, and rendering.

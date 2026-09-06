@@ -18,20 +18,18 @@ locally; your meeting app handles broadcasting.
 *Real application screenshot with a synthetic sample document. The green outline
 selects the source; the separate output window shows the captured region.*
 
-## Status
-
-**0.1.0 Preview** targets Windows 11 x64. Native builds and automated desktop
-capture tests pass. Meeting-app compatibility and mixed-DPI hardware testing are
-still in progress, so this is an early preview rather than a production release.
-
 ## Get RegionShare
 
-Build from source using the instructions below, or download the portable ZIP
-from this repository's [**Releases**](https://github.com/timovaris/screenshare/releases) page once a preview has been published.
-No public download is published yet.
+Download the Windows 11 x64 portable ZIP from the
+[**0.1.0 Preview release**](https://github.com/timovaris/screenshare/releases/tag/v0.1.0-preview),
+or build from source using the instructions below.
 
 Extract the ZIP and run `RegShare.exe`. Installation and administrator rights are
 not required to run it. Preview binaries are unsigned.
+
+This is an early preview. Local capture tests pass; broader meeting-app and
+hardware compatibility results are tracked in
+[GitHub Issues](https://github.com/timovaris/screenshare/issues).
 
 ## Use
 
@@ -72,7 +70,6 @@ also hide it from compatible meeting capture APIs.
 
 RegionShare excludes only the selector and keeps the output shareable. If the
 output overlaps the source, capture pauses automatically until they are separated.
-See the [architecture notes](docs/architecture.md) for details.
 
 ## Features
 
@@ -91,11 +88,11 @@ See the [architecture notes](docs/architecture.md) for details.
   region needs room for the output on another monitor.
 - Protected video may appear black. HDR tone mapping is not implemented;
   capture uses BGRA8 SDR. Enterprise policy can prevent capture.
-- Preferences and window positions are not saved between sessions yet.
-- Global hotkeys, multiple regions, signed binaries, and an installer are deferred.
+- Preferences and window positions are not saved between sessions.
 
-See the [project status](docs/status.md) and [acceptance checklist](docs/validation.md)
-for tested behavior and remaining validation.
+Track [meeting-app compatibility](https://github.com/timovaris/screenshare/issues/1),
+[mixed-DPI and recovery validation](https://github.com/timovaris/screenshare/issues/2),
+and [planned improvements](https://github.com/timovaris/screenshare/issues) in GitHub Issues.
 
 ## Build From Source
 
@@ -120,30 +117,7 @@ WSL UNC paths can produce MSBuild dependency-path casing warnings.
 If an existing Build Tools installation is missing its compiler,
 `scripts\install-build-tools.ps1` adds that component with administrator elevation.
 
-### Test And Package
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\smoke-test.ps1
-powershell -ExecutionPolicy Bypass -File scripts\package.ps1
-```
-
-The desktop smoke test opens a sample source and verifies live pixels, recropping,
-presets, and window states. Close other RegionShare instances first. Packaging
-produces a ZIP containing the executable, license, and documentation, plus a
-SHA-256 checksum in `dist`.
-
-GitHub Actions builds and tests on Windows and uploads the portable package as an
-artifact. GUI capture tests must be run on an interactive Windows desktop.
-
-Coordinate tests can also run on Linux:
-
-```sh
-cmake -S . -B build -DBUILD_TESTING=ON
-cmake --build build
-ctest --test-dir build --output-on-failure
-```
-
-Non-Windows builds only produce coordinate tests, not the application.
+Testing, packaging, and release instructions are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Contribute
 
@@ -151,9 +125,8 @@ Compatibility reports are especially useful: include your Windows build, GPU,
 monitor resolution/scaling, and meeting app. See [CONTRIBUTING.md](CONTRIBUTING.md)
 for reporting bugs and submitting changes.
 
-Next priorities are broader compatibility testing, saved preferences, better
-output placement, and keyboard/accessibility improvements. The
-[publishing checklist](docs/publishing.md) covers the first GitHub preview.
+Use [GitHub Issues](https://github.com/timovaris/screenshare/issues) to report bugs,
+discuss changes, and find work to contribute.
 
 ## License
 
